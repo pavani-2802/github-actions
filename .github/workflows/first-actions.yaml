@@ -1,4 +1,4 @@
-name: My First GitHub Actions
+name: first-actions.yaml
 
 on: [push]
 
