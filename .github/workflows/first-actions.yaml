@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-runs-on: linux-amd64
+    runs-on: linux-amd64
 
     strategy:
       matrix:
