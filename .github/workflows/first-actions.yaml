@@ -3,8 +3,8 @@ name: first-actions.yaml
 on: [push]
 
 jobs:
-  build:
-  runs-on: ubuntu-latest
+  build: 
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
