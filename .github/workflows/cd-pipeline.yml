@@ -1,0 +1,31 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - main # Only deploy when main branch is updated
+
+jobs:
+  deploy:
+    # Use your self-hosted runner for the deployment process
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js # Rebuild or ensure environment is ready
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Build application
+      run: npm install && npm run build
+
+    # Example CD Step: Sync files to a remote server using rsync over SSH
+    # This step is highly specific to your deployment target
+    - name: Deploy via rsync (Example)
+      run: rsync -avz --delete ./dist/ user@your-server-ip:/var/www/your-app-path/
+      # Make sure your self-hosted runner has SSH keys configured locally
+      # to connect to the 'your-server-ip' without a password prompt.
+
